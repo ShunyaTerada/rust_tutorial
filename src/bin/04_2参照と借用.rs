@@ -6,6 +6,10 @@ fn main(){
     println!("==========\n");
 
     deffelence_scope();
+    println!("==========\n");
+
+    com_reference();
+    println!("==========\n");
 }
 
 //参照の借用
@@ -47,6 +51,28 @@ fn deffelence_scope (){
     let r2 = &mut s;
     println!("{r2}");
 }
+
+//可変と不変の参照の組み合わせもエラーになる
+fn com_reference(){
+    let mut s = String::from("helo");
+
+    let _r1 = &s;
+    let _r2 = &s;//不変参照どうしなら問題ない
+    
+    let _r3 = & mut s;//可変が組み合わさるとダメ
+
+    //r3の前にprintln!("{} and {}", r1, r2);などでsのスコープを終わらせていれば問題ない
+}
+
+//参照は常に有効でなければならない
+fn _dangle(){ // dangleはStringへの参照を返す
+
+    let _s = String::from("hello"); // sは新しいString
+
+    // &s  // String sへの参照を返す
+} // ここで、sはスコープを抜け、ドロップされる。そのメモリは消されてむこうな参照が残る
+
+
 
 
 
