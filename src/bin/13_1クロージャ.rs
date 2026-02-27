@@ -1,7 +1,7 @@
 // クロージャとは？
     // 変数に保存したり、引数として渡せる匿名関数
     // 関数と違い、定義されたスコープの値をキャプチャできる
-    //ちなみにＪＳのfunctionとアロー関数はどちらもクロージャ
+    //ちなみにＪＳの名前付き関数とアロー関数はどちらもクロージャ
 
 #[derive(Debug, PartialEq, Copy, Clone)]
 enum ShirtColor {
@@ -61,7 +61,7 @@ fn main() {
 
 fn closure_immutable() {
     let mut list = vec![1, 2, 3];
-    //"クロージャの定義前: {:?}"
+
     println!("Before defining closure: {:?}", list);
 
     let mut borrows_immutably = || println!("From closure: {:?}", list);
